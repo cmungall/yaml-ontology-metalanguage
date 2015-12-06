@@ -68,6 +68,16 @@ public class MetaClass extends MetaObject {
 		}
 		this.generalClassAxioms.add(axiomTemplate);
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "MetaClass [\n equivalentToTemplate=" + equivalentToTemplate
+				+ "\n textDefinitionTemplate=" + textDefinitionTemplate
+				+ "\n subClassOfTemplates=" + subClassOfTemplates
+				+ "\n generalClassAxioms=" + generalClassAxioms + "]";
+	}
 
 	
 	

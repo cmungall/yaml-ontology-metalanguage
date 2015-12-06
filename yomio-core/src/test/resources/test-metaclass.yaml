@@ -1,4 +1,4 @@
-name: test
+pattern_name: test
 
 vars:
   slotA: "'Thing'"

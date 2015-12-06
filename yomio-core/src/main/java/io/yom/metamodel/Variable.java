@@ -43,6 +43,8 @@ public class Variable {
 		this.description = description;
 	}
 	
-	
+	public String toString() {
+		return name;
+	}
 
 }

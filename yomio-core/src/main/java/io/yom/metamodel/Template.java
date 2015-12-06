@@ -25,6 +25,15 @@ public class Template {
 	public List<Variable> getVariableList() {
 		return variableList;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Template [templateString=" + templateString + ", variableList="
+				+ variableList + "]";
+	}
 	
 	
 	

@@ -11,6 +11,7 @@ import io.yom.ontmodel.OntObject;
 import io.yom.ontmodel.OntObjectTest;
 import io.yom.parser.IOHelper;
 import io.yom.parser.IOHelperTest;
+import io.yom.parser.MetaObjectParserTest;
 
 import org.junit.Test;
 import org.semanticweb.owlapi.model.AxiomType;
@@ -33,8 +34,19 @@ public class OWLClassGeneratorTest {
 			LoggerFactory.getLogger(OWLClassGeneratorTest.class);
 
 	@Test
-	public void test() throws IOException, TemplateException {
+	public void test1() throws IOException, TemplateException {
 		MetaClass mc = MetaClassTest.getTestMetaClass();
+		test(mc);
+	}
+	
+	@Test
+	public void test2() throws IOException, TemplateException {
+		MetaClass mc = MetaObjectParserTest.getTestMetaClassFromFile();
+		//test(mc);
+	}
+	
+	public void test(MetaClass mc) throws IOException, TemplateException {
+
 		OntObject obj = OntObjectTest.getTestOntClassObject();
 		IOHelper ioh = IOHelperTest.getTestIOHelper();
 		String path = "/test-ontology.owl";

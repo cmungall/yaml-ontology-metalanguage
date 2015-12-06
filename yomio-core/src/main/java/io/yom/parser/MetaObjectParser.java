@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import io.yom.generator.OWLClassGeneratorTest;
 import io.yom.metamodel.MetaClass;
 import io.yom.metamodel.Template;
 import io.yom.metamodel.Variable;
@@ -12,6 +16,12 @@ import io.yom.parser.AbstractParser;
 
 public class MetaObjectParser extends AbstractParser {
 
+	/**
+	 * Logger.
+	 */
+	private static final Logger logger =
+			LoggerFactory.getLogger(MetaObjectParser.class);
+	
 	public MetaClass translateYAMLToMetaClass(Map yamlObj) {
 		MetaClass mc = new MetaClass();
 		for (Object key : yamlObj.keySet()) {
@@ -21,6 +31,27 @@ public class MetaObjectParser extends AbstractParser {
 			}
 			else if (key.equals("def")) {
 				Template t =  translateTemplate(mc, (Map)v);
+				mc.setTextDefinitionTemplate(t);
+			}
+			else if (key.equals("equivalentTo")) {
+				Template t =  translateTemplate(mc, (Map)v);
+				mc.setEquivalentToTemplate(t);
+			}
+			else if (key.equals("gcis")) {
+				for (Map m : (List<Map>)v) {
+					Template t =  translateTemplate(mc, m);
+					mc.addGeneralClassAxiom(t);
+				}
+			}
+			else if (key.equals("name")) {
+				Template t =  translateTemplate(mc, (Map)v);
+				mc.setNameTemplate(t);
+			}
+			else if (key.equals("pattern_name")) {
+				// TODO
+			}
+			else {
+				// TODO
 			}
 		}
 		return mc;
@@ -33,7 +64,9 @@ public class MetaObjectParser extends AbstractParser {
 		for (Object vn : vnlist) {
 			vars.add(vmap.get((String)vn));
 		}
-		return new Template((String) v.get("text"), vars);
+		Template t = new Template((String) v.get("text"), vars);
+		logger.info("Parsed: "+t);
+		return t;
 	}
 
 	private void translateVars(MetaClass mc, Map vars) {

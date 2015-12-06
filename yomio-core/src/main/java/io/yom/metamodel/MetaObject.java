@@ -2,6 +2,8 @@ package io.yom.metamodel;
 
 import java.util.Map;
 
+import org.yaml.snakeyaml.Yaml;
+
 public class MetaObject {
 	
 	private String metaClassName;
@@ -44,6 +46,14 @@ public class MetaObject {
 	public void setVariableMap(Map<String, Variable> variableMap) {
 		this.variableMap = variableMap;
 	}
-
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "MetaObject [metaClassName=" + metaClassName + ", nameTemplate="
+				+ nameTemplate + ", variableMap=" + variableMap + "]";
+	}
+
 }

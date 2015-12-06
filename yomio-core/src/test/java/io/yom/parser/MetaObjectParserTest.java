@@ -2,6 +2,8 @@ package io.yom.parser;
 
 import static org.junit.Assert.*;
 import io.yom.generator.OWLClassGeneratorTest;
+import io.yom.metamodel.MetaClass;
+import io.yom.metamodel.MetaClassTest;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,18 +23,28 @@ public class MetaObjectParserTest {
 	 * Logger.
 	 */
 	private static final Logger logger =
-			LoggerFactory.getLogger(OWLClassGeneratorTest.class);
-	
+			LoggerFactory.getLogger(MetaObjectParserTest.class);
+
 	@Test
 	public void test() throws IOException {
+
+		MetaClass mc = getTestMetaClassFromFile();
+		MetaClass mc2 = MetaClassTest.getTestMetaClass();
+		logger.info(mc.toString());
+		// TODO: test equality
+
+	}
+
+	public static MetaClass getTestMetaClassFromFile() throws IOException {
 		//FileUtils.readFileToString(file);
 		String path = "/test-metaclass.yaml";
-		InputStream s = this.getClass().getResourceAsStream(path);
+		InputStream s = MetaObjectParserTest.class.getResourceAsStream(path);
 		String yamlString = IOUtils.toString(s, "UTF-8");
 		Object yamlObj = new Yaml().load(yamlString);
 		MetaObjectParser p = new MetaObjectParser();
 		Map ymap = (Map)yamlObj;
-		p.translateYAMLToMetaClass(ymap);
+		MetaClass mc = p.translateYAMLToMetaClass(ymap);
+		return mc;
 	}
 
 }
