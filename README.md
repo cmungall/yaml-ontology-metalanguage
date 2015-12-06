@@ -53,7 +53,7 @@ equivalentTo:
     - segment
 ```
 
-An OWLClass can be represented using the following YAML source
+An OWLClass can be represented using the following yom-object, here written using YAML syntax:
 
 ```
 id: UBERON:1234
@@ -63,6 +63,7 @@ segment: intestine
 ```
 
 (note that tabular formats are also possible too)
+
 
 An OWLGenerator will generate/compile the following axioms:
 
@@ -98,7 +99,35 @@ Note that one of the goals is to make an easy to author format like
 
 Not implemented yet
 
+## Superlanguage vs Layering
 
+Currently yom-lang is conceived of as a superlanguage: Anything in OWL
+can be said in yom-lang, but not everything in yom-lang can be said in
+OWL.
 
+However, it should be possible to layer YOM Ontology Objects into OWL
+using annotations.
 
+For example, the following yom-object
+
+```
+id: UBERON:1234
+implements: uberon-patterns:mucosal_layers
+layer: mucosa
+segment: intestine
+```
+
+Could be represented as the following OWL source:
+
+```
+Class: UBERON:1234
+Annotations:
+  implements uberon-patterns:mucosal_layers,
+  layer mucosa,
+  segment intestine
+```
+
+YOML metaclasses could also be used, but due to creation of blank
+nodes via nesting this would be an awkward way to work with them, and
+pose no advantages over YAML.
 
