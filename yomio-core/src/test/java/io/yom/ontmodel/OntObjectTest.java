@@ -15,7 +15,7 @@ public class OntObjectTest {
 	@Test
 	public void test() {
 		OntObject ontObject = getTestOntClassObject();
-		assertTrue("id", ontObject.getId().equals("FOO:0000001"));
+		assertTrue("id", ontObject.getId().equals(newClassId));
 	}
 	
 	public static OntObject getTestOntClassObject() {

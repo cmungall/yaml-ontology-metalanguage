@@ -131,3 +131,8 @@ YOML metaclasses could also be used, but due to creation of blank
 nodes via nesting this would be an awkward way to work with them, and
 pose no advantages over YAML.
 
+## Using this
+
+Currently no command line interface is implemented: everything is via
+java code. See unit tests for examples.
+
