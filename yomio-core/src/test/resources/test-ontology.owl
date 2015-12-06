@@ -1,0 +1,19 @@
+Prefix: FOO: <http://purl.obolibrary.org/obo/FOO_>
+Prefix: BFO: <http://purl.obolibrary.org/obo/BFO_>
+
+Ontology: <http://purl.obolibrary.org/obo/foo>
+
+
+## TEST
+Class: FOO:1
+ Annotations: rdfs:label "foo1"
+
+## TEST
+Class: FOO:2
+ Annotations: rdfs:label "foo2"
+
+ObjectProperty: BFO:0000050
+ Annotations: rdfs:label "part of"
+
+ObjectProperty: BFO:0000051
+ Annotations: rdfs:label "has part"

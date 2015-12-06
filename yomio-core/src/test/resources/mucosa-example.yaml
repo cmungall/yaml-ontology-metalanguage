@@ -1,0 +1,23 @@
+ontology:
+  id: test
+classes:
+ -
+  id: "UBERON:0015834"
+  name: duodenum lamina propria
+  synonyms:
+    - synonym: "duodenal lamina propria"
+      source: FMA:15972
+    - {synonym: "duodenal lamina propria", source: FMA:15972}
+    - ["lamina propria mucosae of duodenum", FMA:15972]
+    - ["lamina propria of duodenum", FMA:15972]
+  implements: lamina-propria
+  segment: duodenum
+  relationships:
+    -
+      part_of: UBERON:0008342 ## intestinal villus of duodenum
+      source: FMA
+  xrefs:
+    - FMA:15972 # lamina propria of duodenum
+    - MA:0003209 # duodenum lamina propria
+    - EMAPA:27255 # duodenum lamina propria
+
