@@ -1,0 +1,27 @@
+name: test
+
+vars:
+  slotA: "'Thing'"
+  slotB: "'Thing'"
+
+equivalentTo:
+  text: "%s and 'part of' some %s"
+  vars:
+    - slotA
+    - slotB
+
+def:
+  text: "Something that is both an %s and an %s"
+  vars:
+    - slotA
+    - slotB
+
+gcis:
+  -
+    text: "(%s and 'part of' some %s) SubClassOf: (%s and 'has part' some %s)"
+    vars:
+      - slotA
+      - slotB
+      - slotB
+      - slotA
+    
