@@ -1,26 +1,33 @@
 package io.yom.metamodel;
 
+import io.yom.ontmodel.Module;
+
 import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
 
-public class MetaObject {
+public abstract class MetaObject extends Module {
 	
-	private String metaClassName;
+	private String id;
 	private Template nameTemplate;
 	private Map<String, Variable> variableMap;
 	
+	@Override
+	public boolean isMetaObject() {
+		return true;
+	}
+
 	/**
 	 * @return the metaClassName
 	 */
-	public String getMetaClassName() {
-		return metaClassName;
+	public String getId() {
+		return id;
 	}
 	/**
 	 * @param metaClassName the metaClassName to set
 	 */
-	public void setMetaClassName(String metaClassName) {
-		this.metaClassName = metaClassName;
+	public void setId(String metaClassName) {
+		this.id = metaClassName;
 	}
 	/**
 	 * @return the nameTemplate
@@ -52,7 +59,7 @@ public class MetaObject {
 	 */
 	@Override
 	public String toString() {
-		return "MetaObject [metaClassName=" + metaClassName + ", nameTemplate="
+		return "MetaObject [metaClassName=" + id + ", nameTemplate="
 				+ nameTemplate + ", variableMap=" + variableMap + "]";
 	}
 

@@ -4,6 +4,12 @@ vars:
   slotA: "'Thing'"
   slotB: "'Thing'"
 
+name:
+  text: "%s of %s"
+  vars:
+    - slotA
+    - slotB
+
 equivalentTo:
   text: "%s and 'part of' some %s"
   vars:

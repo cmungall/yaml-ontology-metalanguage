@@ -1,0 +1,22 @@
+"@context":
+  FOO: http://purl.obolibrary.org/obo/FOO_
+  BFO: http://purl.obolibrary.org/obo/BFO_
+
+ontology:
+  http://purl.obolibrary.org/obo/foo
+
+classes:  
+
+  - id: FOO:1
+    label: foo1
+
+  - id: FOO:2
+    label: foo2
+
+object_properties:
+
+  - id: BFO:0000050
+    label: part of
+
+  - id: BFO:0000051
+    label: has part

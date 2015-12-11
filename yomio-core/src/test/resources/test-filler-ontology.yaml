@@ -1,0 +1,11 @@
+ontology:
+  http://purl.obolibrary.org/obo/foo
+
+requires:
+  - test-metaclass
+
+classes:  
+
+  - id: FOO:new
+    slotA: FOO:1
+    slotB: FOO:2

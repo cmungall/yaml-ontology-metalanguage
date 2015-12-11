@@ -26,7 +26,7 @@ public class MetaObjectParserTest {
 			LoggerFactory.getLogger(MetaObjectParserTest.class);
 
 	@Test
-	public void test() throws IOException {
+	public void test() throws Exception {
 
 		MetaClass mc = getTestMetaClassFromFile();
 		MetaClass mc2 = MetaClassTest.getTestMetaClass();
@@ -35,7 +35,7 @@ public class MetaObjectParserTest {
 
 	}
 
-	public static MetaClass getTestMetaClassFromFile() throws IOException {
+	public static MetaClass getTestMetaClassFromFile() throws Exception {
 		//FileUtils.readFileToString(file);
 		String path = "/test-metaclass.yaml";
 		InputStream s = MetaObjectParserTest.class.getResourceAsStream(path);

@@ -1,6 +1,6 @@
 package io.yom.generator;
 
-import io.yom.metamodel.MetaClass;
+import io.yom.metamodel.MetaObject;
 import io.yom.metamodel.MetaObject;
 import io.yom.metamodel.Template;
 import io.yom.metamodel.Variable;
@@ -90,7 +90,7 @@ public abstract class OWLNamedObjectGenerator extends OWLOntologyProcessor {
 
 	}
 
-	protected IRI generateIRI(MetaClass metaClass, OntObject ontObject) {
+	protected IRI generateIRI(MetaObject metaObject, OntObject ontObject) {
 		String id = ontObject.getId();
 		IRI iri;
 		if (id != null) {
@@ -103,9 +103,9 @@ public abstract class OWLNamedObjectGenerator extends OWLOntologyProcessor {
 		return iri;
 	}
 
-	public void generateLabel(IRI classIRI, MetaClass metaClass,
+	public void generateLabel(IRI classIRI, MetaObject metaObject,
 			OntObject ontObject) throws TemplateException {
-		Template t = metaClass.getNameTemplate();
+		Template t = metaObject.getNameTemplate();
 		addAnnotationAssertionAxiom(t, classIRI, getOWLDataFactory().getRDFSLabel(), ontObject);
 
 	}

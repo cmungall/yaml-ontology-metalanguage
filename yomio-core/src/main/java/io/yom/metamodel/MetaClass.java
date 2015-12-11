@@ -3,6 +3,12 @@ package io.yom.metamodel;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * A MetaObject that specifies a design pattern for an implementing OWLClass
+ * 
+ * @author cjm
+ *
+ */
 public class MetaClass extends MetaObject {
 	
 	private Template equivalentToTemplate;

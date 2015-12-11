@@ -8,12 +8,17 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.yom.generator.OWLClassGeneratorTest;
 import io.yom.metamodel.MetaClass;
 import io.yom.metamodel.Template;
 import io.yom.metamodel.Variable;
 import io.yom.parser.AbstractParser;
 
+/**
+ * Parses MetaObject YAML files
+ * 
+ * @author cjm
+ *
+ */
 public class MetaObjectParser extends AbstractParser {
 
 	/**
@@ -22,7 +27,7 @@ public class MetaObjectParser extends AbstractParser {
 	private static final Logger logger =
 			LoggerFactory.getLogger(MetaObjectParser.class);
 	
-	public MetaClass translateYAMLToMetaClass(Map yamlObj) {
+	public MetaClass translateYAMLToMetaClass(Map yamlObj) throws UnknownTagException {
 		MetaClass mc = new MetaClass();
 		for (Object key : yamlObj.keySet()) {
 			Object v = yamlObj.get(key);
@@ -48,10 +53,10 @@ public class MetaObjectParser extends AbstractParser {
 				mc.setNameTemplate(t);
 			}
 			else if (key.equals("pattern_name")) {
-				// TODO
+				mc.setId((String)v);
 			}
 			else {
-				// TODO
+				throw new UnknownTagException(key);
 			}
 		}
 		return mc;

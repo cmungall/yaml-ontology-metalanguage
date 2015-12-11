@@ -12,6 +12,7 @@ import io.yom.ontmodel.OntObjectTest;
 import io.yom.parser.IOHelper;
 import io.yom.parser.IOHelperTest;
 import io.yom.parser.MetaObjectParserTest;
+import io.yom.parser.OntObjectParserTest;
 
 import org.junit.Test;
 import org.semanticweb.owlapi.model.AxiomType;
@@ -25,6 +26,19 @@ import org.semanticweb.owlapi.model.OWLSubClassOfAxiom;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Tests a simple generation from MetaClass example.
+ * A single class FOO:new is created, using two 'primitive' classes FOO:1 and FOO:2
+ * 
+ * This module also simultaneously tests java-based and yaml-based ways of loading
+ * modules:
+ * 
+ *  - creating MetaClass objects via java vs parsing from a pattern yaml file
+ *  - creating filler OntObjects via java vs parsing from a pattern yaml file
+ * 
+ * @author cjm
+ *
+ */
 public class OWLClassGeneratorTest {
 	
 	/**
@@ -34,20 +48,28 @@ public class OWLClassGeneratorTest {
 			LoggerFactory.getLogger(OWLClassGeneratorTest.class);
 
 	@Test
-	public void test1() throws IOException, TemplateException {
+	public void testUsingHardwiredMetaClass() throws Exception {
+		OntObject obj = OntObjectTest.getTestOntClassObject();
 		MetaClass mc = MetaClassTest.getTestMetaClass();
-		test(mc);
+		generateAndValidateOWLClass(mc, obj);
 	}
 	
 	@Test
-	public void test2() throws IOException, TemplateException {
-		MetaClass mc = MetaObjectParserTest.getTestMetaClassFromFile();
-		//test(mc);
-	}
-	
-	public void test(MetaClass mc) throws IOException, TemplateException {
-
+	public void testUsingParsedMetaClass() throws Exception {
 		OntObject obj = OntObjectTest.getTestOntClassObject();
+		MetaClass mc = MetaObjectParserTest.getTestMetaClassFromFile();
+		generateAndValidateOWLClass(mc, obj);
+	}
+
+	@Test
+	public void testUsingParsedFillers() throws Exception {
+		OntObject obj = OntObjectParserTest.getTestFillerOntClassObjectFromFile();
+		MetaClass mc = MetaObjectParserTest.getTestMetaClassFromFile();
+		generateAndValidateOWLClass(mc, obj);
+	}
+
+	public void generateAndValidateOWLClass(MetaClass mc, OntObject obj) throws Exception {
+
 		IOHelper ioh = IOHelperTest.getTestIOHelper();
 		String path = "/test-ontology.owl";
 		OWLOntology ontology = ioh.loadOntology(this.getClass().getResourceAsStream(path));

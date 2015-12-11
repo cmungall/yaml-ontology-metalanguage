@@ -22,13 +22,19 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Generates OWLClass objects from a combination of a template (MetaClass) plus filled slot values (OntObject)
+ * 
+ * @author cjm
+ *
+ */
 public class OWLClassGenerator extends OWLNamedObjectGenerator {
 
 	/**
 	 * Logger.
 	 */
 	private static final Logger logger =
-			LoggerFactory.getLogger(OWLNamedObjectGenerator.class);
+			LoggerFactory.getLogger(OWLClassGenerator.class);
 	String textDefinitionProperty = "http://purl.obolibrary.org/obo/IAO_0000115";
 
 	public OWLClassGenerator(OWLOntology ontology) {

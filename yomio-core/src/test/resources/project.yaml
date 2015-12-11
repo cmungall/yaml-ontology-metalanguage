@@ -1,0 +1,8 @@
+"@context":
+  FOO: http://purl.obolibrary.org/obo/FOO_
+  BFO: http://purl.obolibrary.org/obo/BFO_
+
+id:
+  http://purl.obolibrary.org/obo/foo
+
+rootModules: [test-filler-ontology, test-filler-individuals]

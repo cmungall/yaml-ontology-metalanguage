@@ -7,13 +7,13 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class MetaClassTest {
+public class MetaClassTest extends MetaObjectTest {
 
 	@Test
 	public void test() {
 		
 		MetaClass mc = getTestMetaClass();
-		assertTrue("name does not match", mc.getMetaClassName().equals("test"));
+		assertTrue("name does not match", mc.getId().equals("test"));
 		
 	}
 
@@ -22,7 +22,7 @@ public class MetaClassTest {
 		variableList.add(new Variable(slotA));
 		variableList.add(new Variable(slotB));
 		MetaClass mc = new MetaClass();
-		mc.setMetaClassName("test");
+		mc.setId("test");
 		
 		mc.setNameTemplate(new Template("%s of %s", variableList));
 		mc.setEquivalentToTemplate(new Template("%s and 'part of' some %s", variableList));
@@ -36,7 +36,5 @@ public class MetaClassTest {
 		return mc;
 	}
 	
-	public static String slotA = "slotA";
-	public static String slotB = "slotB";
 	
 }
