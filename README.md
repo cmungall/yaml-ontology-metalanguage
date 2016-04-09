@@ -64,6 +64,7 @@ segment: intestine
 
 (note that tabular formats are also possible too)
 
+Note the use of human-readable shortforms: these are mapped to IRIs via a JSON-LD context
 
 An OWLGenerator will generate/compile the following axioms:
 
@@ -73,6 +74,8 @@ Annotations:
   rdfs:label "mucosa of intestine"
 EquivalentTo: 'mucosa' and 'part of' some 'intestine'
 ```
+
+(but actual URIs would be used here)
 
 An OWL Reasoner can then be used to classify this
 
